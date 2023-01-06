@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Just CRC32C\Just CRC32C.csproj" />
+    <ProjectReference Include="..\JustCRC32C\JustCRC32C.csproj" />
   </ItemGroup>
 
 </Project>

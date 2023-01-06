@@ -6,6 +6,17 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <TargetFramework>net6.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Just CRC32C</Title>
+        <Authors>bartimaeusnek</Authors>
+        <Description>Just a simple and fast CRC32C Wrapper with hardware acceleration.</Description>
+        <Copyright>2023</Copyright>
+        <PackageProjectUrl>https://github.com/bartimaeusnek/Just-CRC32C</PackageProjectUrl>
+        <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/bartimaeusnek/Just-CRC32C</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>CRC32C</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <ItemGroup>
