@@ -34,7 +34,9 @@ public static partial class Crc32C
      * SOFTWARE.
      */
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#if NET5_0_OR_GREATER
     [SkipLocalsInit]
+#endif
     internal static uint CalculateSoftware(Span<byte> input)
     {
         int offset = 0;

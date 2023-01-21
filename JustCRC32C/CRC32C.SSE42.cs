@@ -9,7 +9,9 @@ public static partial class Crc32C
      *  Calculate the CRC32 checksum using the SSE4.2 instruction set
      */
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#if NET5_0_OR_GREATER
     [SkipLocalsInit]
+#endif
     internal static uint CalculateHardware(Span<byte> data)
     {
         uint crc = 0xFFFFFFFF;
@@ -67,7 +69,9 @@ public static partial class Crc32C
      *  Calculate the CRC32 checksum using the SSE4.2 instruction set for x64 Processors
      */
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#if NET5_0_OR_GREATER
     [SkipLocalsInit]
+#endif
     internal static uint CalculateHardwareX64(Span<byte> data)
     {
         ulong crc = 0x00000000_FFFFFFFF;
