@@ -1,4 +1,5 @@
 # Just-CRC32C
+[![License: LGPL](https://img.shields.io/github/license/bartimaeusnek/Just-CRC32C)](https://opensource.org/licenses/LGPL-3.0) [![nuget](https://img.shields.io/nuget/v/JustCRC32C.svg)](https://www.nuget.org/packages/JustCRC32C/)
 
 Just a simple and fast CRC32C Wrapper with hardware acceleration.
 
