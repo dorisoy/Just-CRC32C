@@ -15,15 +15,29 @@
         <RepositoryUrl>https://github.com/bartimaeusnek/Just-CRC32C</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>CRC32C</PackageTags>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <TargetFrameworks>net5.0;net6.0;net7.0;netcoreapp3.1</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <PropertyGroup Label="Package-SourceLink">
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Package-ReproducibleBuild">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <ItemGroup Label="ItemGroup-SourceLink">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
     
     <ItemGroup>

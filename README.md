@@ -9,44 +9,45 @@ Software-fallback is taken from: [here](https://github.com/force-net/Crc32.NET/b
 and Licensed under [MIT License](https://github.com/force-net/Crc32.NET/blob/26c5a818a5c7a3d6a622c92d3cd08dba586c263c/LICENSE) and improved by a tiny bit.
 
 Benchmark results:
-```
-BenchmarkDotNet=v0.13.3, OS=Windows 10 (10.0.19044.2364/21H2/November2021Update)
+``` ini
+
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19045.3086/22H2/2022Update)
 AMD Ryzen 5 5600X, 1 CPU, 12 logical and 6 physical cores
-.NET SDK=6.0.402
-  [Host]     : .NET 6.0.12 (6.0.1222.56807), X64 RyuJIT AVX2
-  Job-BYMXXN : .NET 6.0.12 (6.0.1222.56807), X64 RyuJIT AVX2
+.NET SDK=8.0.100-preview.1.23115.2
+  [Host]     : .NET 6.0.18 (6.0.1823.26907), X64 RyuJIT AVX2
+  Job-LBWJTK : .NET 8.0.0 (8.0.23.11008), X64 RyuJIT AVX2
 
-Runtime=.NET 6.0  RunStrategy=Throughput  
+Runtime=.NET 8.0  RunStrategy=Throughput  
+
 ```
-
-|                 Method |               Arrays |             Mean |          Error |         StdDev | Ratio | RatioSD |
-|----------------------- |--------------------- |-----------------:|---------------:|---------------:|------:|--------:|
-| JustCrc32C_HardwareX64 | big a(...)ytes) [41] |   330,226.069 μs |  5,736.6919 μs |  4,790.3975 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | big a(...)ytes) [41] |   629,052.193 μs |  9,892.7473 μs |  9,253.6820 μs |  1.90 |    0.05 |
-|    JustCrc32C_Software | big a(...)ytes) [41] | 1,668,792.867 μs | 22,200.8505 μs | 20,766.6893 μs |  5.04 |    0.11 |
-|          Crc32_dot_NET | big a(...)ytes) [41] | 1,671,624.007 μs | 15,321.7433 μs | 14,331.9682 μs |  5.05 |    0.09 |
-|                        |                      |                  |                |                |       |         |
-| JustCrc32C_HardwareX64 | mediu(...)ytes) [44] |    26,340.056 μs |    430.1118 μs |    402.3269 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | mediu(...)ytes) [44] |    50,136.805 μs |    807.4380 μs |    674.2473 μs |  1.91 |    0.05 |
-|    JustCrc32C_Software | mediu(...)ytes) [44] |   133,309.879 μs |  1,613.7295 μs |  1,430.5292 μs |  5.07 |    0.10 |
-|          Crc32_dot_NET | mediu(...)ytes) [44] |   133,926.738 μs |  1,478.0324 μs |  1,382.5524 μs |  5.09 |    0.11 |
-|                        |                      |                  |                |                |       |         |
-| JustCrc32C_HardwareX64 | small(...)ytes) [37] |       248.442 μs |      4.0474 μs |      3.7860 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | small(...)ytes) [37] |       493.948 μs |      7.9443 μs |      7.4311 μs |  1.99 |    0.03 |
-|    JustCrc32C_Software | small(...)ytes) [37] |     1,327.410 μs |     13.9663 μs |     13.0641 μs |  5.34 |    0.10 |
-|          Crc32_dot_NET | small(...)ytes) [37] |     1,336.333 μs |     20.3987 μs |     19.0809 μs |  5.38 |    0.12 |
-|                        |                      |                  |                |                |       |         |
-| JustCrc32C_HardwareX64 | small(...)ytes) [49] |     2,592.696 μs |     32.4776 μs |     30.3796 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | small(...)ytes) [49] |     5,028.597 μs |     86.9979 μs |     81.3779 μs |  1.94 |    0.03 |
-|    JustCrc32C_Software | small(...)ytes) [49] |    13,351.273 μs |    180.4138 μs |    159.9322 μs |  5.15 |    0.08 |
-|          Crc32_dot_NET | small(...)ytes) [49] |    13,440.784 μs |    154.0398 μs |    144.0889 μs |  5.18 |    0.08 |
-|                        |                      |                  |                |                |       |         |
-| JustCrc32C_HardwareX64 | small(...)ytes) [38] |        24.800 μs |      0.3488 μs |      0.3263 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | small(...)ytes) [38] |        50.105 μs |      0.4064 μs |      0.3801 μs |  2.02 |    0.03 |
-|    JustCrc32C_Software | small(...)ytes) [38] |       132.803 μs |      1.1026 μs |      1.0314 μs |  5.36 |    0.09 |
-|          Crc32_dot_NET | small(...)ytes) [38] |       133.919 μs |      1.2902 μs |      1.0774 μs |  5.41 |    0.07 |
-|                        |                      |                  |                |                |       |         |
-| JustCrc32C_HardwareX64 | tiny (...)ytes) [27] |         2.335 μs |      0.0301 μs |      0.0282 μs |  1.00 |    0.00 |
-|    JustCrc32C_Hardware | tiny (...)ytes) [27] |         4.284 μs |      0.0621 μs |      0.0581 μs |  1.83 |    0.03 |
-|    JustCrc32C_Software | tiny (...)ytes) [27] |        16.036 μs |      0.2534 μs |      0.2370 μs |  6.87 |    0.14 |
-|          Crc32_dot_NET | tiny (...)ytes) [27] |        16.510 μs |      0.1651 μs |      0.1544 μs |  7.07 |    0.12 |
+|                 Method |               Arrays |             Mean |         Error |        StdDev |           Median | Ratio | RatioSD |
+|----------------------- |--------------------- |-----------------:|--------------:|--------------:|-----------------:|------:|--------:|
+| **JustCrc32C_HardwareX64** | **big a(...)ytes) [41]** |   **318,356.546 μs** |   **959.0297 μs** |   **748.7473 μs** |   **318,351.500 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | big a(...)ytes) [41] |   614,984.617 μs | 1,256.5669 μs |   981.0448 μs |   614,961.000 μs |  1.93 |    0.01 |
+|    JustCrc32C_Software | big a(...)ytes) [41] | 1,203,940.725 μs | 8,988.4146 μs | 7,017.5629 μs | 1,201,179.900 μs |  3.78 |    0.03 |
+|          Crc32_dot_NET | big a(...)ytes) [41] | 1,404,042.087 μs | 8,606.4555 μs | 8,050.4838 μs | 1,403,310.000 μs |  4.41 |    0.03 |
+|                        |                      |                  |               |               |                  |       |         |
+| **JustCrc32C_HardwareX64** | **mediu(...)ytes) [44]** |    **25,509.060 μs** |   **308.8947 μs** |   **288.9403 μs** |    **25,313.297 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | mediu(...)ytes) [44] |    48,946.426 μs |    47.9768 μs |    40.0628 μs |    48,952.936 μs |  1.92 |    0.02 |
+|    JustCrc32C_Software | mediu(...)ytes) [44] |    96,605.061 μs | 1,044.4672 μs |   925.8930 μs |    96,954.150 μs |  3.79 |    0.05 |
+|          Crc32_dot_NET | mediu(...)ytes) [44] |   112,126.815 μs | 1,285.5934 μs | 1,202.5449 μs |   111,274.080 μs |  4.40 |    0.07 |
+|                        |                      |                  |               |               |                  |       |         |
+| **JustCrc32C_HardwareX64** | **small(...)ytes) [37]** |       **243.729 μs** |     **0.2736 μs** |     **0.2285 μs** |       **243.614 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | small(...)ytes) [37] |       486.916 μs |     0.5105 μs |     0.4263 μs |       486.761 μs |  2.00 |    0.00 |
+|    JustCrc32C_Software | small(...)ytes) [37] |       961.411 μs |     4.4316 μs |     4.1454 μs |       961.110 μs |  3.94 |    0.02 |
+|          Crc32_dot_NET | small(...)ytes) [37] |     1,121.784 μs |    10.2630 μs |     9.6001 μs |     1,121.731 μs |  4.60 |    0.04 |
+|                        |                      |                  |               |               |                  |       |         |
+| **JustCrc32C_HardwareX64** | **small(...)ytes) [49]** |     **2,519.386 μs** |    **28.7737 μs** |    **26.9149 μs** |     **2,502.841 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | small(...)ytes) [49] |     4,980.498 μs |    89.1571 μs |    83.3976 μs |     4,947.656 μs |  1.98 |    0.05 |
+|    JustCrc32C_Software | small(...)ytes) [49] |     9,880.705 μs |   194.7273 μs |   182.1480 μs |     9,932.087 μs |  3.92 |    0.09 |
+|          Crc32_dot_NET | small(...)ytes) [49] |    11,428.893 μs |   227.2975 μs |   287.4585 μs |    11,432.837 μs |  4.53 |    0.13 |
+|                        |                      |                  |               |               |                  |       |         |
+| **JustCrc32C_HardwareX64** | **small(...)ytes) [38]** |        **24.642 μs** |     **0.4474 μs** |     **0.4185 μs** |        **24.575 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | small(...)ytes) [38] |        49.555 μs |     0.9786 μs |     1.1269 μs |        49.009 μs |  2.02 |    0.06 |
+|    JustCrc32C_Software | small(...)ytes) [38] |        99.483 μs |     1.9473 μs |     2.9147 μs |       100.555 μs |  4.07 |    0.14 |
+|          Crc32_dot_NET | small(...)ytes) [38] |       113.458 μs |     2.2429 μs |     3.4919 μs |       111.205 μs |  4.64 |    0.16 |
+|                        |                      |                  |               |               |                  |       |         |
+| **JustCrc32C_HardwareX64** | **tiny (...)ytes) [27]** |         **1.903 μs** |     **0.0293 μs** |     **0.0274 μs** |         **1.911 μs** |  **1.00** |    **0.00** |
+|    JustCrc32C_Hardware | tiny (...)ytes) [27] |         3.530 μs |     0.0283 μs |     0.0265 μs |         3.518 μs |  1.86 |    0.04 |
+|    JustCrc32C_Software | tiny (...)ytes) [27] |        11.966 μs |     0.2357 μs |     0.2205 μs |        11.943 μs |  6.29 |    0.14 |
+|          Crc32_dot_NET | tiny (...)ytes) [27] |        13.929 μs |     0.1878 μs |     0.1757 μs |        13.931 μs |  7.32 |    0.13 |

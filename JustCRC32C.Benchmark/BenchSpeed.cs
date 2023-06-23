@@ -21,7 +21,7 @@ public class ListWrapper
     }
 }
 
-[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net60)]
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net80)]
 public class BenchSpeed
 {
     [ParamsSource(nameof(ValuesForA))]
