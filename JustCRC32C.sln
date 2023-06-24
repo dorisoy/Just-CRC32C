@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustCRC32C.Benchmark", "Jus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCRC32C.Debug", "JustCRC32C.Debug\JustCRC32C.Debug.csproj", "{DEBF4BF5-1380-4D4B-9E1B-A3AB7AC1104C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCRC32C.TestNF", "JustCRC32C.TestNF\JustCRC32C.TestNF.csproj", "{17EA5747-91CA-4B28-B3E0-6F6E60557B0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DEBF4BF5-1380-4D4B-9E1B-A3AB7AC1104C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEBF4BF5-1380-4D4B-9E1B-A3AB7AC1104C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEBF4BF5-1380-4D4B-9E1B-A3AB7AC1104C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EA5747-91CA-4B28-B3E0-6F6E60557B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EA5747-91CA-4B28-B3E0-6F6E60557B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EA5747-91CA-4B28-B3E0-6F6E60557B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EA5747-91CA-4B28-B3E0-6F6E60557B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

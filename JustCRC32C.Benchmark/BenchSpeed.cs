@@ -21,6 +21,7 @@ public class ListWrapper
     }
 }
 
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net481)]
 [SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net80)]
 public class BenchSpeed
 {
@@ -72,14 +73,14 @@ public class BenchSpeed
         
         var bigArrays = new List<byte[]>
         {
-            new byte[Array.MaxLength / 4],
-            new byte[Array.MaxLength / 2],
-            new byte[Array.MaxLength    ]
+            new byte[0X7FFFFFC7 / 4],
+            new byte[0X7FFFFFC7 / 2],
+            new byte[0X7FFFFFC7    ]
         };
         r.NextBytes(bigArrays[0]);
         r.NextBytes(bigArrays[1]);
         r.NextBytes(bigArrays[2]);
-        yield return new ListWrapper(bigArrays, "big arrays ("+Array.MaxLength / 4 +" - "+Array.MaxLength+" bytes)");;
+        yield return new ListWrapper(bigArrays, "big arrays ("+0X7FFFFFC7 / 4 +" - "+0X7FFFFFC7+" bytes)");;
     }
 
     [Benchmark(Baseline = true)]

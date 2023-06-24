@@ -15,14 +15,23 @@
         <RepositoryUrl>https://github.com/bartimaeusnek/Just-CRC32C</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>CRC32C</PackageTags>
-        <Version>1.0.2</Version>
+        <Version>1.1.0</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;netcoreapp3.1;netstandard2.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     
+    <ItemGroup Condition="$(TargetFramework) == 'netstandard2.0'">
+        <PackageReference Include="System.Memory" Version="4.5.5" />
+        <None Remove="libJustCRC32C_Native.dll" />
+        <EmbeddedResource Include="libJustCRC32C_Native.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+    
     <ItemGroup>
+        <None Include="libJustCRC32C_Native.dll" Pack="true" PackagePath="\lib\netstandard2.0"/>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
@@ -47,6 +56,9 @@
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>$(MSBuildProjectName).Benchmark</_Parameter1>
         </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>$(MSBuildProjectName).TestNF</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
     
     <ItemGroup>
@@ -64,6 +76,9 @@
       </Compile>
       <Compile Update="CRC32C.Software.LookupTable.cs">
         <DependentUpon>CRC32C.Software.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CRC32C.NetStandard.cs">
+        <DependentUpon>CRC32C.cs</DependentUpon>
       </Compile>
     </ItemGroup>
     

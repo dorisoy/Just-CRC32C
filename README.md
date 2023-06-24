@@ -8,6 +8,8 @@ The library overall is licensed under LGPLv3, so you can use it in a propriatary
 Software-fallback is taken from: [here](https://github.com/force-net/Crc32.NET/blob/26c5a818a5c7a3d6a622c92d3cd08dba586c263c/Crc32.NET/SafeProxy.cs#L38)
 and Licensed under [MIT License](https://github.com/force-net/Crc32.NET/blob/26c5a818a5c7a3d6a622c92d3cd08dba586c263c/LICENSE) and improved by a tiny bit.
 
+The netstandard2.0 variation for .netFramework uses p/invoke for the ANSI-C compatible JustCRC32C.Native library to archive hardware acceleration.
+
 Benchmark results:
 ``` ini
 

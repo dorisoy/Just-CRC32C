@@ -1,14 +1,15 @@
 ﻿namespace JustCRC32C;
-
+#if !NETSTANDARD2_0
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 #if NET5_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.Arm;
 #endif
-
+#endif  
 public static partial class Crc32C
 {
+#if !NETSTANDARD2_0
     static Crc32C()
     {
         // Check if the CPU supports the SSE4.2 instruction set
@@ -41,7 +42,7 @@ public static partial class Crc32C
             ToUse = CalculateSoftware;
         }
     }
-
+#endif  
     private delegate uint ToUseDefinition(Span<byte> data);
     private static readonly ToUseDefinition ToUse;
 #if NET5_0_OR_GREATER

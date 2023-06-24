@@ -1,4 +1,5 @@
-﻿namespace JustCRC32C;
+﻿#if !NETSTANDARD2_0
+namespace JustCRC32C;
 
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
@@ -133,3 +134,4 @@ public static partial class Crc32C
         }
     }
 }
+#endif
